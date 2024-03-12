@@ -1,4 +1,4 @@
-                    package com.example.befit
+package com.example.befit
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    LoginScreen()
                 }
             }
         }
@@ -42,11 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Text(
-//        text = "Hello $name!",
-//        modifier = modifier
-//    )
+fun LoginScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
@@ -111,6 +107,6 @@ fun PasswordField() {
 @Composable
 fun GreetingPreview() {
     BeFitTheme {
-        Greeting("Android")
+        LoginScreen()
     }
 }
