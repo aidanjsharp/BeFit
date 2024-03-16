@@ -7,12 +7,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,14 +43,15 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(modifier: Modifier = Modifier) {
+    //TopAppBar(title = { "BeFit" })
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    )
-    {
+    ){
         Box(){
             Text(text = "BeFit.")
         }
@@ -75,10 +78,66 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             Button(onClick = { /*onClick()*/ }) {
                 Text("Forgot Password")
             }
+            Button(onClick = { /*onClick()*/ }) {
+                Text("Create an Account")
+            }
         }
 
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun WelcomeScreen(modifier: Modifier = Modifier){
+    //TopAppBar(title = { "BeFit" })
+    Column(
+        modifier = Modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Box(){
+            Text(text = "BeFit.")
+
+        }
+        Column(
+            modifier = Modifier,
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        )
+        {
+            Text(text = "Please enter your most recent workout:")
+            DailyWorkoutField()
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreen(modifier: Modifier = Modifier){
+    //TopAppBar(title = { "BeFit" })
+    Column(
+        modifier = Modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Box(){
+            Text(text = "BeFit.")
+        }
+
+        Button(onClick = { /*onClick()*/ }) {
+            Text("Refresh")
+        }
+
+        LazyColumn(
+            modifier = modifier
+        ){
+
+
+        }
+    }
+}
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -103,10 +162,38 @@ fun PasswordField() {
         label = { Text("Password:") }
     )
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DailyWorkoutField() {
+    var text by remember { mutableStateOf("") }
+
+    TextField(
+        value = text,
+        onValueChange = { text = it },
+        label = { Text("Today's Workout") }
+    )
+}
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     BeFitTheme {
         LoginScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview1() {
+    BeFitTheme {
+        WelcomeScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview2() {
+    BeFitTheme {
+        HomeScreen()
     }
 }
