@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,6 +31,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.befit.ui.theme.BeFitTheme
 
 class MainActivity : ComponentActivity() {
@@ -65,6 +67,7 @@ fun ScreenFrame(
                     textAlign = TextAlign.Center
                 ) },
                 scrollBehavior = scrollBehavior
+
             )
         }
     ){
@@ -74,9 +77,9 @@ fun ScreenFrame(
                 .padding(it)
         ){
             when (screenNo) {
-                1 -> LoginScreen()
-                2 -> WelcomeScreen()
-                3 -> HomeScreen()
+                1 -> LoginScreen(screenNo = 1)
+                2 -> WelcomeScreen(screenNo = 2)
+                3 -> HomeScreen(screenNo = 3)
                 else -> {
                     Text(text = "ERROR.")
                 }
@@ -87,69 +90,101 @@ fun ScreenFrame(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
-    //TopAppBar(title = { "BeFit" })
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    screenNo: Int
+) {
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Box(){
-            Text(text = "Welcome to BeFit!\n\n")
+        Box(
+            modifier = modifier.padding(all = 10.dp)
+        ){
+            Text(
+                text = "Welcome to BeFit!",
+                modifier = modifier.padding(all = 20.dp)
+            )
         }
         UsernameField()
 
         PasswordField()
 
-        Button(onClick = { /*onClick()*/ }) {
+        Button(
+            onClick = { /*screenNo = 2*/ },
+            modifier = modifier.padding(all = 4.dp)
+        ) {
             Text("Log In")
         }
-        Button(onClick = { /*onClick()*/ }) {
-            Text("Forgot Password")
-        }
-        Button(onClick = { /*onClick()*/ }) {
-            Text("Create an Account")
-        }
 
-
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun WelcomeScreen(modifier: Modifier = Modifier){
-    //TopAppBar(title = { "BeFit" })
-    Column(
-        modifier = Modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-
-        Column(
-            modifier = Modifier,
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        )
-        {
-            Text(text = "Please enter your most recent workout:")
-            DailyWorkoutField()
+        Row {
+            Button(
+                onClick = { /*onClick()*/ },
+                modifier = modifier.padding(all = 4.dp)
+            ) {
+                Text("Forgot Password")
+            }
+            Button(
+                onClick = { /*onClick()*/ },
+                modifier = modifier.padding(all = 4.dp)
+            ) {
+                Text("Create an Account")
+            }
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier){
-    //TopAppBar(title = { "BeFit" })
+fun WelcomeScreen(
+    modifier: Modifier = Modifier,
+    screenNo: Int
+){
+    Column(
+        modifier = Modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    )
+    {
+        Button(
+            onClick = { /*onClick()*/ },
+            modifier = modifier.padding(all = 4.dp)
+        ) {
+            Text("Log Out")
+        }
+
+        Text(text = "Please enter your most recent workout:")
+        DailyWorkoutField()
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    screenNo: Int
+){
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-
-        Button(onClick = { /*onClick()*/ }) {
-            Text("Refresh")
+        Row {
+            Button(
+                onClick = { /*onClick()*/ },
+                modifier = modifier.padding(all = 4.dp)
+            ) {
+                Text("Refresh")
+            }
+            Button(
+                onClick = { /*onClick()*/ },
+                modifier = modifier.padding(all = 4.dp)
+            ) {
+                Text("Log Out")
+            }
         }
+
 
         LazyColumn(
             modifier = modifier
