@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ScreenFrame()
+                    ScreenFrame(screenNo = 1)
                 }
             }
         }
@@ -52,7 +52,8 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenFrame(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    screenNo: Int
 ){
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     Scaffold (
@@ -72,11 +73,16 @@ fun ScreenFrame(
                 .fillMaxSize()
                 .padding(it)
         ){
-            LoginScreen()
+            if (screenNo == 1) {
+                LoginScreen()
+            } else if (screenNo == 2){
+                WelcomeScreen()
+            } else if (screenNo == 3){
+                HomeScreen()
+            } else{
+                Text(text = "ERROR.")
+            }
         }
-
-
-
     }
 }
 
@@ -196,7 +202,7 @@ fun DailyWorkoutField() {
 @Composable
 fun GreetingPreview() {
     BeFitTheme {
-        ScreenFrame()
+        ScreenFrame(screenNo = 1)
     }
 }
 
@@ -204,7 +210,7 @@ fun GreetingPreview() {
 @Composable
 fun GreetingPreview1() {
     BeFitTheme {
-        WelcomeScreen()
+        ScreenFrame(screenNo = 2)
     }
 }
 
@@ -212,6 +218,6 @@ fun GreetingPreview1() {
 @Composable
 fun GreetingPreview2() {
     BeFitTheme {
-        HomeScreen()
+        ScreenFrame(screenNo = 3)
     }
 }
