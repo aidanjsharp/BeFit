@@ -73,14 +73,13 @@ fun ScreenFrame(
                 .fillMaxSize()
                 .padding(it)
         ){
-            if (screenNo == 1) {
-                LoginScreen()
-            } else if (screenNo == 2){
-                WelcomeScreen()
-            } else if (screenNo == 3){
-                HomeScreen()
-            } else{
-                Text(text = "ERROR.")
+            when (screenNo) {
+                1 -> LoginScreen()
+                2 -> WelcomeScreen()
+                3 -> HomeScreen()
+                else -> {
+                    Text(text = "ERROR.")
+                }
             }
         }
     }
@@ -219,5 +218,13 @@ fun GreetingPreview1() {
 fun GreetingPreview2() {
     BeFitTheme {
         ScreenFrame(screenNo = 3)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview3() {
+    BeFitTheme {
+        ScreenFrame(screenNo = 4)
     }
 }
