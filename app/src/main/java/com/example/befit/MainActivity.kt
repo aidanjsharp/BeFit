@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.befit.ui.theme.BeFitTheme
+import com.example.befit.ui.theme.DarkGreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +50,10 @@ fun ScreenFrame(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
+                colors = TopAppBarDefaults.smallTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
                 title = { Text(
                     text = "BeFit.",
                     textAlign = TextAlign.Center
@@ -67,7 +73,7 @@ fun ScreenFrame(
                 2 -> WelcomeScreen(screenNo = 2)
                 3 -> HomeScreen(screenNo = 3)
                 else -> {
-                    Text(text = "ERROR.")
+                    Text(text = "Error, page not found.")
                 }
             }
         }
