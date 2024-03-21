@@ -51,17 +51,62 @@ fun LoginScreen(
         }
 
         Row {
-            Button(
-                onClick = { /*onClick()*/ },
+            /*Button(
+                onClick = { *//*onClick()*//* },
                 modifier = modifier.padding(all = 4.dp)
             ) {
                 Text("Forgot Password")
-            }
+            }*/
             Button(
                 onClick = { /*onClick()*/ },
                 modifier = modifier.padding(all = 4.dp)
             ) {
                 Text("Create an Account")
+            }
+        }
+    }
+}
+
+@Composable
+fun CreateAnAccountScreen(
+    modifier: Modifier = Modifier,
+    screenNo: Int
+) {
+    Column(
+        modifier = Modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Text(
+            text = "Enter a username",
+            modifier = modifier.padding(all = 20.dp)
+        )
+        UsernameField()
+
+        Text(
+            text = "Enter a Password",
+            modifier = modifier.padding(all = 20.dp)
+        )
+        PasswordField()
+
+        Text(
+            text = "Confirm Password",
+            modifier = modifier.padding(all = 20.dp)
+        )
+        PasswordField()
+
+        Row {
+            Button(
+                onClick = { /*onClick()*/ },
+                modifier = modifier.padding(all = 4.dp)
+            ) {
+                Text("Back")
+            }
+            Button(
+                onClick = { /*onClick()*/ },
+                modifier = modifier.padding(all = 4.dp)
+            ) {
+                Text("Next")
             }
         }
     }
@@ -123,6 +168,7 @@ fun HomeScreen(
         }
     }
 }
+
 
 
 

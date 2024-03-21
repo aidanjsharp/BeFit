@@ -70,6 +70,7 @@ fun ScreenFrame(
                 1 -> LoginScreen(screenNo = 1)
                 2 -> WelcomeScreen(screenNo = 2)
                 3 -> HomeScreen(screenNo = 3)
+                4 -> CreateAnAccountScreen(screenNo = 4)
                 else -> {
                     Text(text = "Error, page not found.")
                 }
