@@ -14,6 +14,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextAlign
@@ -26,16 +30,25 @@ class MainActivity : ComponentActivity() {
         setContent {
             BeFitTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    ScreenFrame(screenNo = 1)
-                }
+                Application()
             }
         }
     }
 }
+
+
+@Composable
+fun Application(){
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        var screenNo by remember { mutableStateOf(1) }
+        ScreenFrame(screenNo = screenNo)
+    }
+}
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,6 +56,7 @@ fun ScreenFrame(
     modifier: Modifier = Modifier,
     screenNo: Int
 ){
+    var screenNo by remember { mutableStateOf(1) }
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     Scaffold (
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -79,6 +93,10 @@ fun ScreenFrame(
     }
 }
 
+
+
+
+/***********Previews***********/
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {

@@ -58,7 +58,7 @@ fun LoginScreen(
                 Text("Forgot Password")
             }*/
             Button(
-                onClick = { /*onClick()*/ },
+                onClick = { /*Set<screenNo> = 4*/},
                 modifier = modifier.padding(all = 4.dp)
             ) {
                 Text("Create an Account")
