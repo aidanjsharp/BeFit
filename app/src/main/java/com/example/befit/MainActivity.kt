@@ -79,11 +79,9 @@ fun ScreenFrame(
     }
 }
 
-
-
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun LoginScreenPreview() {
     BeFitTheme {
         ScreenFrame(screenNo = 1)
     }
@@ -91,7 +89,7 @@ fun GreetingPreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview1() {
+fun WelcomeScreenPreview() {
     BeFitTheme {
         ScreenFrame(screenNo = 2)
     }
@@ -99,7 +97,7 @@ fun GreetingPreview1() {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+fun HomeScreenPreview() {
     BeFitTheme {
         ScreenFrame(screenNo = 3)
     }
@@ -107,7 +105,7 @@ fun GreetingPreview2() {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview3() {
+fun CreateAnAccountScreenPreview() {
     BeFitTheme {
         ScreenFrame(screenNo = 4)
     }
